@@ -188,7 +188,7 @@ svg path {
         opacity: 1;
         transform: translateY(0);
     }
-    80% {
+    70% {
         opacity: 0.4;
         transform: translateY(0);
     }
