@@ -191,6 +191,7 @@ svg path {
     width: 58vw; 
     max-width: 30vw;
     aspect-ratio: 4 / 3; 
+    transform: translate(-50%, -50%);
     height: auto; 
     background: url("images/me frame.png") no-repeat center center / contain;
     z-index: 2;
