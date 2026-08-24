@@ -140,11 +140,6 @@ svg {
         width: 100%;
         height: auto;
     }
-    .slide {
-        width: 90vw;
-        height: 60vh;
-
-    }
 }
 svg path {
     stroke: #457BBE;
