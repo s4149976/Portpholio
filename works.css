@@ -341,3 +341,9 @@ svg path {
     stroke: #457BBE;
     fill: none;
 }
+@media (max-width:786px) {
+    .slide{
+        width: auto;
+        height: 50vh;
+    }
+}
