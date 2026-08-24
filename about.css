@@ -210,7 +210,6 @@ svg path {
     pointer-events: none;
 }
 @media (max-width: 768px) {
-    @media (max-width: 768px) {
     #frame {
         position: absolute;
         left: 50%;
