@@ -210,10 +210,16 @@ svg path {
     pointer-events: none;
 }
 @media (max-width: 768px) {
+    @media (max-width: 768px) {
     #frame {
-        width: clamp(50vw, 70vw, 70vw);
-        height: 50vh;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 70vw;
+        height: auto;
     }
+
     #pin {
         width: clamp(20px, 6vw, 40px);
         display: none;
