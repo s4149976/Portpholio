@@ -1,0 +1,343 @@
+html {
+    scroll-behavior: smooth;
+}
+body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    /* Fixed background for the entire site */
+
+    position: relative;
+}
+
+/* Dynamic hover background layer */
+#hover-bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+#hover-bg-overlay.active {
+    opacity: 0.45; /* Adjust opacity level for background hover strength */
+}
+
+main {
+    position: relative;
+    z-index: 1;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    animation: appear 3s ease-in-out backwards;
+}
+@keyframes appear {
+    0% {
+        opacity: 0;
+        scale: 0.9;
+    }
+    45% {
+        opacity: 0;
+        scale: 0.9;
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
+}
+#navi {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+#logo {
+    width: 6rem;
+    height: auto;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+nav {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0 4.1vw 0 4.1vw;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    width: 100%;
+}
+#menu, #menu-mobile {
+    display: flex;
+    text-transform: uppercase;
+    align-items: center;
+    gap: 5rem;
+}
+
+#menu li a {
+    color: #457BBE;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.4rem;
+    font-style: normal;
+    line-height: normal;
+    transition: color 1s ease forward;
+}
+#menu li a:hover {
+    color: #FFB6C1;
+    transform: scale(1.1);
+}
+.strokes {
+    position: relative;
+    margin: auto;
+    background-color: #457BBE;
+    height: 0.1vh;
+    width: 95vw;
+}
+.strokes_thin {
+    position: relative;
+    margin: auto;
+    margin-top: 0.5vh;
+    background-color: #457BBE;
+    height: 0.1vh;
+    width: 90vw;
+}
+svg {
+    top: 15%;
+    position: absolute;
+    margin: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scale 3s ease-in-out forwards;
+}
+@keyframes scale {
+    0% {
+        transform: translateX(-50%) scale(0.8);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+}
+@media (max-width: 768px) {
+    svg {
+        top: 40%;
+        width: 100%;
+        height: auto;
+    }
+}
+svg path {
+    stroke: #457BBE;
+    stroke-width: 2px;
+    fill: #457BBE;
+    fill-opacity: 1;
+    stroke-dasharray: 2200;
+    stroke-dashoffset: 2200;
+    animation: draw 2s ease-in-out forwards;
+}
+
+@keyframes draw {
+    0% {
+        stroke-dashoffset: 2200;
+        fill-opacity: 0;
+    }
+    80% {
+        stroke-dashoffset: 0;
+        fill-opacity: 0;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        fill-opacity: 1;
+    }
+}
+#landing {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+#works {
+    position: relative;
+    width: 100vw;
+    height: 100%;
+    margin-top: 50vh;
+}
+
+/* Scroll Fade Animation Keyframes */
+@keyframes fadeView {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+}
+
+#academic {
+    position: relative;
+    width: 100%;
+    height: 10%;
+    margin-bottom: -6vh;
+    font-family: "Perandory", sans-serif;
+    color: #457BBE;
+    font-size: 5rem;
+    bottom: -5vh;
+    text-align: left;
+    padding-left: 5%;
+    animation: fadeView ease-in-out forwards;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+}
+
+#personal,
+.pe {
+    position: relative;
+    width: 100%;
+    height: 10%;
+    margin-bottom: -2vh;
+    font-family: "Perandory", sans-serif;
+    color: #457BBE;
+    font-size: 5rem;
+    bottom: -5vh;
+    text-align: right;
+    padding-right: 5%;
+    animation: fadeView ease-in-out forwards;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+}
+
+.slider,
+.slider-1 {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+    cursor: grab;
+    animation: fadeView ease-in-out forwards;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+    
+    /* Horizontal edge fading */
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 15%,
+        black 85%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 15%,
+        black 85%,
+        transparent 100%
+    );
+}
+
+.slider {
+    top: -50vh;
+}
+
+.slider:active,
+.slider-1:active {
+    cursor: grabbing;
+}
+
+.slide-track {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    will-change: transform;
+}
+
+.slide {
+    height: 20vw;
+    width: auto; /* Dynamic width based on image aspect ratio */
+    flex-shrink: 0;
+    position: relative;
+    margin: 0 20px;
+    cursor: pointer;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.slide:hover {
+    transform: scale(1.05); /* Scales the frame up on hover */
+    z-index: 10;
+}
+
+.slide-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide-image img {
+    height: 100%;
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+    filter: grayscale(100%);
+    will-change: transform, filter;
+    pointer-events: none;
+    transition: filter 0.3s ease;
+}
+
+.slide:hover .slide-image img {
+    filter: grayscale(0%);
+}
+
+.slide-overlay {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: #457BBE;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.4rem;
+}
+
+.slide:hover .slide-overlay {
+    opacity: calc(1 - var(--slider-moving));
+}
+
+.slide-overlay svg {
+    width: 16px;
+    height: 16px;
+    stroke: #457BBE;
+    fill: none;
+}

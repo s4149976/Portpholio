@@ -1,0 +1,285 @@
+/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+/* Header & Navigation */
+header {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    width: 100%;
+    z-index: 1000; /* Raised z-index prevents background or figure elements from overlapping */
+    animation: appear 3s ease-in-out forwards;
+}
+
+nav {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 4.1vw;
+}
+
+#navi {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo {
+    width: 6rem;
+    height: auto;
+}
+
+#menu, 
+#menu-mobile {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    gap: clamp(1.5rem, 5vw, 5rem);
+}
+
+#menu li a {
+    color: #457BBE;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.4rem;
+    font-style: normal;
+    line-height: normal;
+    transition: color 1s ease forward;
+}
+#menu li a:hover {
+    color: #FFB6C1;
+    transform: scale(1.1);
+}
+
+/* Decorative Divider Strokes */
+.strokes, 
+.strokes_thin {
+    position: relative;
+    margin: 0 auto;
+    background-color: #457BBE;
+    height: 1px;
+}
+
+.strokes {
+    width: 95%;
+}
+
+.strokes_thin {
+    margin-top: 0.5vh;
+    width: 90%;
+}
+
+/* Hero / Landing Section */
+#landing {
+    position: relative;
+    width: 100%;
+    height: 150vh; 
+}
+
+.landing-content {
+    position: relative;
+    width: 100%;
+    height: 150vh; 
+}
+
+div.background {    
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: contain; 
+    animation: appear 3s ease-in-out forwards;
+    background-image: url("images/pose port background.png");
+    z-index: 1;
+}
+
+div.figure {    
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: contain; 
+    background-image: url("images/pose port.png");
+    z-index: 10;
+    pointer-events: none;
+    animation: appear 3s ease-in-out backwards;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        scale: 0.9;
+    }
+    45% {
+        opacity: 0;
+        scale: 0.9;
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.title {
+    font-family: "Bigelow Rules", serif;
+    font-size: 25vw;
+    margin: auto;
+    position: absolute;
+    top: 10vh; /* Pushes title down below the fixed header area */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: #457BBE;
+    animation: scale 3s ease-in-out forwards;
+}
+
+@keyframes scale {
+    0% {
+        transform: translateX(-50%) scale(0.8);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+.title path {
+    stroke: #457BBE;
+    stroke-width: 2px;
+    fill: #457BBE;
+    fill-opacity: 0;
+    stroke-dasharray: 2200;
+    stroke-dashoffset: 2200;
+    animation: draw 2s ease-in-out forwards;
+}
+
+@keyframes draw {
+    0% {
+        stroke-dashoffset: 2200;
+        fill-opacity: 0;
+    }
+    80% {
+        stroke-dashoffset: 0;
+        fill-opacity: 0;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        fill-opacity: 1;
+    }
+}
+
+.content {
+    position: relative;
+    margin-top: 150vh; 
+    width: 100%;
+    min-height: 80vh;
+    z-index: 5; /* Keep content above figure, but below fixed header */
+    background-color: #ffffff; 
+}
+
+#graph {
+    position: absolute;
+    margin: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+    .content {
+        margin-top: 0;
+    }
+    #graph {
+        font-size: 40vw;
+        width: 40vh;
+        height: 40vh;
+    }
+}
+#graph path {
+    stroke: #457BBE;
+    stroke-width: 2px;
+    fill-opacity: 1;
+    stroke-dasharray: 2200;
+    stroke-dashoffset: 2200;
+    /* Standard Fallback Animation */
+    animation: graph-draw ease-in-out forwards;
+    
+    /* Scroll-Driven Animation (Supported Modern Browsers) */
+    animation-timeline: view();
+    animation-range: entry 40% cover 70%;
+}
+@keyframes graph-draw {
+    0% {
+        stroke-dashoffset: 2200;
+        fill-opacity: 0;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+        fill-opacity: 1;
+    }
+    
+}
+
+@media (max-width: 768px) {
+
+
+
+    /* Keep parent at standard positioning */
+    .landing-content {
+        height: 100vh;
+        position: relative;
+        overflow: hidden; /* Prevents figure from overflowing on mobile */
+    }
+
+    /* Fixed figure pinned to full viewport */
+    div.figure {
+        position: fixed;
+        top: 0;
+        left: -25%;
+        width: 150%;
+        height: 100vh;
+        background-position: center center;
+        transform: none; /* Remove transform so fixed positioning relative to viewport works */
+    }
+
+    /* Center background and title inside viewport */
+    div.background {
+        background-position: center center;
+    }
+
+    .title {
+        top: 50%;
+        left: 50%;
+        
+        width: 150%;
+        animation: scale-mobile 3s ease-in-out forwards;
+    }
+    div.content {
+        margin-top: 70vh; /* Adjust content margin for mobile */
+    }
+}
+
+/* Keyframe for mobile centered title */
+@keyframes scale-mobile {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
