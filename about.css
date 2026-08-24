@@ -12,8 +12,8 @@ body {
     background-position: top center;
     background-size: cover; 
     background-attachment: fixed;
-
 }
+
 main {
     z-index: 1;
 }
@@ -30,15 +30,15 @@ header {
 @keyframes appear {
     0% {
         opacity: 0;
-        scale: 0.9;
+        transform: scale(0.9);
     }
     45% {
         opacity: 0;
-        scale: 0.9;
+        transform: scale(0.9);
     }
     100% {
         opacity: 1;
-        scale: 1;
+        transform: scale(1);
     }
 }
 
@@ -87,8 +87,10 @@ nav {
     font-size: 1.4rem;
     font-style: normal;
     line-height: normal;
-    transition: color 1s ease forward;
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
+
 #menu li a:hover {
     color: #FFB6C1;
     transform: scale(1.1);
@@ -127,13 +129,7 @@ svg {
         transform: translateX(-50%) scale(1);
     }
 }
-@media (max-width: 768px) {
-    svg {
-        top: 30%;
-        width: 80%;
-        height: auto;
-    }
-}
+
 svg path {
     stroke: #457BBE;
     stroke-width: 2px;
@@ -180,18 +176,16 @@ svg path {
     transform: translateY(-50%);
     width: 96vw;
     margin: 0 auto;
-    grid-template-areas: "stack";
+    display: flex;
+    justify-content: center;
     align-items: center;
-    justify-items: center;
 }
 
-/* Frame scaled up */
+/* Frame centered */
 #frame {
     position: relative;
-    width: 58vw; 
-    max-width: 30vw;
+    width: 30vw;
     aspect-ratio: 4 / 3; 
-    transform: translate(-50%, -50%);
     height: auto; 
     background: url("images/me frame.png") no-repeat center center / contain;
     z-index: 2;
@@ -199,35 +193,17 @@ svg path {
 
 /* Pin alignment */
 #pin {
-    position: sticky;
-    top: 0;
+    position: absolute;
+    top: -20px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     width: clamp(28px, 4vw, 55px);
     aspect-ratio: 4 / 3;
     background: url("images/paperpin.png") no-repeat center center / contain;
     z-index: 5;
     pointer-events: none;
 }
-@media (max-width: 768px) {
-    #frame {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 70vw;
-        height: auto;
-    }
 
-    #pin {
-        width: clamp(20px, 6vw, 40px);
-        display: none;
-    }
-    #music {
-        width: clamp(10vw, 10vw, 20vw);
-        height: auto;
-    }
-}
 /* Sticky wrapper for Music */
 .music-sticky-wrapper {
     position: sticky;
@@ -242,7 +218,7 @@ svg path {
 }
 
 #music {
-    position: sticky;
+    position: relative;
     margin-left: 10vw;
     width: 22vw;
     aspect-ratio: 4 / 3;
@@ -281,7 +257,7 @@ svg path {
 @keyframes graph-draw {
     from {
         transform: scale(9);
-        opacity:0;
+        opacity: 0;
     }
     to {
         transform: scale(1);
@@ -335,7 +311,6 @@ svg path {
     animation: graph-draw ease-in-out forwards;
     animation-timeline: view();
     animation-range: entry -5% cover 50%;
-    
 }
 
 #Hello {
@@ -347,6 +322,7 @@ svg path {
     animation-timeline: view();
     animation-range: entry 0 cover 50%;
 }
+
 @keyframes showup {
     from {
         opacity: 0;
@@ -392,7 +368,6 @@ svg path {
     background: url("images/sparkle.png") no-repeat center center / contain;
     z-index: 12;
     pointer-events: none;
-    
 }
 
 #who {
@@ -439,7 +414,6 @@ svg path {
 }
 
 #app-text {
-    position: relative;
     grid-column: 2;
     grid-row: 2;
     font-size: clamp(2.5rem, 8vw, 10vw);
@@ -466,7 +440,6 @@ svg path {
     width: clamp(55px, 9vw, 130px);
     aspect-ratio: 1 / 1;
     animation: float 1s ease-in-out infinite alternate;
-    
 }
 
 #Ae {
@@ -488,6 +461,7 @@ svg path {
     animation: float 1s ease-in-out infinite alternate;
     animation-delay: 1.5s;
 }
+
 @keyframes float {
     0% {
         transform: translateY(0);
@@ -531,7 +505,6 @@ svg path {
     width: clamp(55px, 9vw, 15vw);
     aspect-ratio: 1 / 1;
     justify-self: center;
-    /* Move transition here so it applies on hover-in AND hover-out */
     transition: transform 0.3s ease-in-out; 
 }
 
@@ -553,12 +526,18 @@ svg path {
     background: url("images/insta logo.png") no-repeat center center / contain;
 }
 
-/* Group hover state for all social icons */
 #Ytb:hover, #Mail:hover, #Ig:hover {
     transform: scale(1.1);
 }
-/* Mobile & Small Screens Adjustment */
+
+/* Mobile & Small Screens */
 @media (max-width: 768px) {
+    svg {
+        top: 30%;
+        width: 80%;
+        height: auto;
+    }
+
     #collection {
         min-height: 180vh;
     }
@@ -567,12 +546,17 @@ svg path {
         width: 98vw;
     }
 
-    #board {
-        height: 70vh;
+    #frame {
+        width: 70vw;
     }
 
-    #frame {
-        width: 50vw;
+    #pin {
+        display: none;
+    }
+
+    #music {
+        width: clamp(10vw, 20vw, 20vw);
+        height: auto;
     }
 
     .des {
@@ -594,11 +578,8 @@ svg path {
     }
 
     #app {
-        display: grid;
         grid-template-columns: repeat(4, auto);
         grid-template-rows: auto auto;
-        justify-content: center;
-        align-content: center;
         min-height: auto;
         margin-top: 30vh;
         padding: 1rem 0.5rem;
@@ -618,9 +599,11 @@ svg path {
     #VSC { grid-column: 2; grid-row: 2; width: clamp(32px, 15vw, 15vw); }
     #Ae  { grid-column: 3; grid-row: 2; width: clamp(32px, 15vw, 15vw); }
     #Ai  { grid-column: 4; grid-row: 2; width: clamp(32px, 15vw, 15vw); }
+
     #Ytb, #Mail, #Ig {
         width: clamp(32px, 15vw, 15vw);
     }
+
     #social {
         font-size: clamp(2rem, 15vw, 15vw);
     }
