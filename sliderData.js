@@ -14,4 +14,5 @@ export const personalSliderData = [
   { title: "[FANART]", img: "./images/kaneki.png"},
   { title: "[FANART]", img: "./images/Superman.png"},
   { title: "[FANART]", img: "./images/COTN.png"},
+  { title: "[FANART]", img: "./images/Phoster Rokuhira.png"},
 ];
