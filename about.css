@@ -212,6 +212,7 @@ svg path {
     #frame {
         width: clamp(50vw, 70vw, 70vw);
         height: 50vh;
+        
     }
     #pin {
         width: clamp(20px, 6vw, 40px);
